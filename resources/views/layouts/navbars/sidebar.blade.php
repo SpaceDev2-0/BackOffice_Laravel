@@ -87,6 +87,21 @@
           <p>{{ __('Gestion Catégories Trotinettes') }}</p>
         </a>
       </li>
+
+      <li class = "@if ($activePage == 'Locations') active @endif">
+        <a href="{{ route('locations.index') }}">
+          <i class="now-ui-icons design_bullet-list-67"></i>
+          <p>{{ __('Gestion Locations') }}</p>
+        </a>
+      </li>
+
+      <li class = "@if ($activePage == 'Accessoires') active @endif">
+        <a href="{{ route('accessoires.index') }}">
+          <i class="now-ui-icons design_bullet-list-67"></i>
+          <p>{{ __('Gestion Accessoire') }}</p>
+        </a>
+      </li>
+
       <!-- <li class = "">
         <a href="{{ route('page.index','upgrade') }}" class="bg-info">
           <i class="now-ui-icons arrows-1_cloud-download-93"></i>

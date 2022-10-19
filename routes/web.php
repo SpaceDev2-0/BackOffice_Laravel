@@ -3,6 +3,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TrotinetteController;
 use App\Http\Controllers\CategorieTController;
+use App\Http\Controllers\LocationController;
+use App\Http\Controllers\AccessoireController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +28,8 @@ Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('trotinettes', TrotinetteController::class);
 	Route::resource('categoriets', CategorieTController::class);
+	Route::resource('locations', LocationController::class);
+	Route::resource('accessoires', AccessoireController::class);
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
