@@ -34,4 +34,3 @@ Route::group(['middleware' => 'auth'], function () {
 	// Route::resource('trotinettes', 'App\Http\Controllers\TrotinetteController', ['except' => ['show']]);
 	// Route::resource('categoriets', 'App\Http\Controllers\CategorieTController', ['except' => ['show']]);
 });
-
