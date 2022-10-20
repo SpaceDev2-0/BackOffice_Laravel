@@ -7,7 +7,8 @@ use App\Http\Controllers\LocationController;
 use App\Http\Controllers\AccessoireController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\VeloController;
-
+use App\Http\Controllers\BaladeController;
+use App\Http\Controllers\ParticipantController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,6 +35,37 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('accessoires', AccessoireController::class);
 	Route::resource('category', CategoryController::class);
 	Route::resource('velo', VeloController::class);
+
+
+	
+
+
+Route::get('/balade/all', [BaladeController::class, 'AllBalade'])->name('all.balade');
+
+Route::post('/balade/add', [BaladeController::class, 'AddBalade'])->name('store.balade');
+Route::get('/balade/create', function () {
+    return view('Balade.BackOffice.AddBalade');
+});
+Route::delete('/balade/delete/{id}',[BaladeController::class,'destroy']);
+
+Route::get('/balade/edit/{id}',[BaladeController::class,'edit']);
+Route::put('/balade/update/{id}',[BaladeController::class,'update']);
+
+
+
+Route::get('/participant/all', [ParticipantController::class, 'AllParticipant'])->name('all.participant');
+
+Route::post('/participant/add', [ParticipantController::class, 'AddParticipant'])->name('store.participant');
+Route::get('/participant/create', [ParticipantController::class, 'createParticipant']);
+
+
+
+Route::delete('/participant/delete/{id}',[ParticipantController::class,'destroy']);
+
+Route::get('/participant/edit/{id}',[ParticipantController::class,'edit']);
+Route::put('/participant/update/{id}',[ParticipantController::class,'update']);
+
+
 
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
