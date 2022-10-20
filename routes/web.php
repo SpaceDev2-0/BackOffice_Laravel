@@ -5,6 +5,8 @@ use App\Http\Controllers\TrotinetteController;
 use App\Http\Controllers\CategorieTController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\AccessoireController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\VeloController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +32,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('categoriets', CategorieTController::class);
 	Route::resource('locations', LocationController::class);
 	Route::resource('accessoires', AccessoireController::class);
+	Route::resource('category', CategoryController::class);
+	Route::resource('velo', VeloController::class);
+
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);

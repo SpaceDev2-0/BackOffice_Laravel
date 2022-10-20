@@ -101,6 +101,19 @@
           <p>{{ __('Gestion Accessoire') }}</p>
         </a>
       </li>
+      
+      <li class = "@if ($activePage == 'velos') active @endif">
+        <a href="{{ route('velo.index') }}">
+          <i class="now-ui-icons design_bullet-list-67"></i>
+          <p>{{ __('Gestion velo') }}</p>
+        </a>
+      </li>
+      <li class = "@if ($activePage == 'category') active @endif">
+        <a href="{{ route('category.index') }}">
+          <i class="now-ui-icons design_bullet-list-67"></i>
+          <p>{{ __('Gestion category') }}</p>
+        </a>
+      </li>
 
       <!-- <li class = "">
         <a href="{{ route('page.index','upgrade') }}" class="bg-info">
