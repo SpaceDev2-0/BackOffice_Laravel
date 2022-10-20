@@ -106,6 +106,22 @@
            </a>
                </li>
 
+               <li class="@if ($activePage == 'evenement') active @endif">
+        <a href="{{ route('all.evenement','evenement') }}">
+          <i class="now-ui-icons education_atom"></i>
+          <p>{{ __('Evenement') }}</p>
+
+           </a>
+               </li>
+
+               <li class="@if ($activePage == 'ReservationEvenement') active @endif">
+        <a href="{{ route('all.reservationevenement','ReservationEvenement') }}">
+          <i class="now-ui-icons education_atom"></i>
+          <p>{{ __('Reservation Evenement') }}</p>
+
+           </a>
+               </li>
+
       <li class = "@if ($activePage == 'Locations') active @endif">
         <a href="{{ route('locations.index') }}">
           <i class="now-ui-icons design_bullet-list-67"></i>

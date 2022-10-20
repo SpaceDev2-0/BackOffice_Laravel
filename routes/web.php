@@ -9,6 +9,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\VeloController;
 use App\Http\Controllers\BaladeController;
 use App\Http\Controllers\ParticipantController;
+use App\Http\Controllers\EvenementController;
+use App\Http\Controllers\ReservationEvenementController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -74,4 +76,24 @@ Route::put('/participant/update/{id}',[ParticipantController::class,'update']);
 	Route::get('{page}', ['as' => 'page.index', 'uses' => 'App\Http\Controllers\PageController@index']);
 	// Route::resource('trotinettes', 'App\Http\Controllers\TrotinetteController', ['except' => ['show']]);
 	// Route::resource('categoriets', 'App\Http\Controllers\CategorieTController', ['except' => ['show']]);
+
+	
+	// Routes evenements et reservations evenement
+	
+Route::get('/evenement/all', [EvenementController::class, 'AllEvenement'])->name('all.evenement');
+Route::post('/evenement/add', [EvenementController::class, 'AddEvenement'])->name('store.evenement');
+Route::get('/evenement/create', function () {
+    return view('Evenement.BackOffice.AddEvenement');
+});
+Route::delete('/evenement/delete/{id}',[EvenementController::class,'destroy']);
+Route::get('/evenement/edit/{id}',[EvenementController::class,'edit']);
+Route::put('/evenement/update/{id}',[EvenementController::class,'update']);
+Route::get('/reservationevenement/all', [ReservationEvenementController::class, 'AllReservationEvenement'])->name('all.reservationevenement');
+Route::post('/reservationevenement/add', [ReservationEvenementController::class, 'AddReservationEvenement'])->name('store.reservationevenement');
+Route::get('/reservationevenement/create', [ReservationEvenementController::class, 'createReservationEvent']);
+Route::delete('/reservationevenement/delete/{id}',[ReservationEvenementController::class,'destroy']);
+Route::get('/reservationevenement/edit/{id}',[ReservationEvenementController::class,'edit']);
+Route::put('/reservationevenement/update/{id}',[ReservationEvenementController::class,'update']);
+
+
 });
