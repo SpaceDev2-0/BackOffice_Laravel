@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\CategorieT;
+use App\Models\Trotinette;
 use Illuminate\Http\Request;
 
 class CategorieTController extends Controller
@@ -92,6 +93,11 @@ class CategorieTController extends Controller
     */
     public function destroy(CategorieT $categoriet)
     {
+        
+        $trotinettes= Trotinette::where('categorie_id', $categoriet->id)->get();
+        $trotinettes->each->delete();
+
+
         $categoriet->delete();
         return redirect()->route('categoriets.index')->with('success','CategorieTrotinette has been deleted successfully');
     }

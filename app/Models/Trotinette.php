@@ -14,6 +14,6 @@ class Trotinette extends Model
     // }
  
     public function categoryT(){
-        return $this->belongsTo(CategorieT::class);
+        return $this->belongsTo(CategorieT::class,'categorie_id','id');
     }
 }

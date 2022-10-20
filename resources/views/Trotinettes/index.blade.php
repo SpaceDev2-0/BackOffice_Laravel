@@ -71,12 +71,10 @@
               @foreach ($trotinettes as $trotinette)
                     <tr>
                         <td>{{ $trotinette->nom }}</td>
-                        @foreach ($categoriets as $categoriet)
-                         @if($categoriet->id == $trotinette->categorie_id)
+                       
                          
-                        <td>{{ $categoriet->type }}</td>
-                         @endif
-                        @endforeach
+                        <td>{{ $trotinette->categoryT->type }}</td>
+                         
                         <td>{{ $trotinette->vitesse }}</td>
                         <td>{{ $trotinette->poids }}</td>
                         <td>{{ $trotinette->couleur }}</td>

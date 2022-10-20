@@ -81,7 +81,10 @@ class TrotinetteController extends Controller
     */
     public function edit(Trotinette $trotinette)
     {
-        return view('trotinettes.edit',compact('trotinette'));
+        $categoriets = CategorieT::all();
+
+
+        return view('trotinettes.edit',compact('trotinette','categoriets'));
     }
 
     /**
@@ -117,8 +120,12 @@ class TrotinetteController extends Controller
     */
     public function destroy(Trotinette $trotinette)
     {
+
+        
+
         $trotinette->delete();
         return redirect()->route('trotinettes.index')->with('success','Trotinette has been deleted successfully');
+    
     }
     
 }

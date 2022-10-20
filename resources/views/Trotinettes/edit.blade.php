@@ -34,10 +34,12 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Categorie Trotinette :</strong>
-                        <input type="text" name="categorie_id" value="{{ $trotinette->categorie_id }}" class="form-control" placeholder="Categorie Trotinette">
-                        @error('categorie')
-                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                        @enderror
+                        <select name="categorie_id" class="form-control">
+                        <option selected disabled> {{$trotinette->categoryT->type}}</option>
+                                @foreach($categoriets as $item)
+                                <option value="{{ $item->id }}">{{ $item->type }}</option>
+                                @endforeach
+                        </select>
                     </div>
                 </div>
 

@@ -24,7 +24,9 @@ return new class extends Migration
             $table->string('prix_location');
             $table->string('quantite');
             $table->timestamps();
-            $table->foreign('categorie_id')->references('type')->on('categorie_t_s');
+            $table->foreign('categorie_id')->references('type')->on('categorie_t_s')->onDelete('cascade');
+            
+
             
         });
     }
