@@ -89,7 +89,20 @@
       </li>
 
       </li>
+    <li class="@if ($activePage == 'post') active @endif">
+        <a href="{{ route('AllPost','Post') }}">
+          <i class="now-ui-icons education_atom"></i>
+          <p>{{ __('Post') }}</p>
 
+           </a>
+               </li>
+               <li class="@if ($activePage == 'categorya') active @endif">
+        <a href="{{ route('Allcategoryarticle','categorya') }}">
+          <i class="now-ui-icons education_atom"></i>
+          <p>{{ __('Category article') }}</p>
+
+           </a>
+               </li>
                <li class="@if ($activePage == 'balade') active @endif">
         <a href="{{ route('all.balade','balade') }}">
           <i class="now-ui-icons education_atom"></i>

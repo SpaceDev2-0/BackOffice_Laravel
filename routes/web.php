@@ -6,6 +6,9 @@ use App\Http\Controllers\CategorieTController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\AccessoireController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CategoryAController;
+use App\Http\Controllers\PostController;
+
 use App\Http\Controllers\VeloController;
 use App\Http\Controllers\BaladeController;
 use App\Http\Controllers\ParticipantController;
@@ -37,6 +40,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('accessoires', AccessoireController::class);
 	Route::resource('category', CategoryController::class);
 	Route::resource('velo', VeloController::class);
+
 
 
 	
@@ -95,5 +99,20 @@ Route::delete('/reservationevenement/delete/{id}',[ReservationEvenementControlle
 Route::get('/reservationevenement/edit/{id}',[ReservationEvenementController::class,'edit']);
 Route::put('/reservationevenement/update/{id}',[ReservationEvenementController::class,'update']);
 
+Route::get('/Post/all', [PostController::class, 'AllPost'])->name('AllPost');
+Route::Post('/Post/add', [PostController::class, 'AddPost'])->name('posts.store');
+Route::get('/Post/create', [PostController::class, 'CreatePost'])->name('posts.create');
+
+Route::delete('/Post/delete/{id}',[PostController::class,'destroy']);
+
+Route::get('/post/edit/{id}',[PostController::class,'edit']);
+Route::put('/Post/update/{id}',[PostController::class,'update']);
+Route::get('/categorya/all', [CategoryAController::class, 'Allcategoryarticle'])->name('Allcategoryarticle');
+Route::Post('/categorya/add', [CategoryAController::class, 'Addcategorya'])->name('categoryas.store');
+Route::get('/categorya/create', [CategoryAController::class, 'Createcategorya'])->name('categoryas.create');
+Route::delete('/categorya/delete/{id}',[CategoryAController::class,'destroy']);
+
+Route::get('/categorya/edit/{id}',[CategoryAController::class,'edit']);
+Route::put('/categorya/update/{id}',[CategoryAController::class,'update']);
 
 });
