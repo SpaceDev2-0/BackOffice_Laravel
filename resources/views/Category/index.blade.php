@@ -85,6 +85,9 @@
 			@endif
 		</table>
                 </div>
+				<ul class="pagination justify-content-center mb-4">
+        {{$data->links("pagination::bootstrap-4")}}
+        </ul>
             </div>
 
         </div>

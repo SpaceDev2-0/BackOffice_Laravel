@@ -54,7 +54,7 @@
 			<tr>
 				<th>Image</th>
 				<th>Name</th>
-				
+				<th>Category</th>
 				<th>Spefication</th>
 				<th>availability</th>
 				<th>prix location</th>
@@ -67,7 +67,7 @@
 					<tr>
 						<td><img src="{{ asset('images/' . $row->velo_image) }}" width="75" /></td>
 						<td>{{ $row->velo_name }}</td>
-						
+						<td>{{ $row->category->category_name }}</td>
                         <td>{{ $row->velo_spefication }}</td>
 						<td>{{ $row->velo_availability }}</td>
 						<td>{{ $row->velo_prix_location }}</td>
@@ -91,10 +91,17 @@
 					<td colspan="5" class="text-center">No Data Found</td>
 				</tr>
 			@endif
+		
 		</table>
-		{!! $data->links() !!}
+		
+		
+		
 	</div>
+	<ul class="pagination justify-content-center mb-4">
+        {{$data->links("pagination::bootstrap-4")}}
+        </ul>
 </div>
+
 	  </div>
 	</div>
 </div>

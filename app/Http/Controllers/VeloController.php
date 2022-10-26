@@ -16,9 +16,11 @@ class VeloController extends Controller
     public function index()
     {
         //
-        $data = Velo::latest()->paginate(5);
+        $data = Velo::latest()->orderBy('id','desc')->paginate(1);
+      
+        
 
-        return view('velo.index', compact('data'))->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('velo.index', compact('data'));
     }
 
     /**
@@ -46,7 +48,7 @@ class VeloController extends Controller
         $category= Category::findOrFail($request->category_id);
 
         $request->validate([
-            'velo_name'          =>  'required',
+            'velo_name'          =>  'required|unique:velos|max:255',
             'velo_spefication'         =>  'required',
             'velo_prix_location'   =>  'required',
             'velo_image'         =>  'required'
@@ -65,14 +67,7 @@ class VeloController extends Controller
 
         ]);
 
-        // $velo = new Velo;
-
-        // $velo->velo_name = $request->velo_name;
-        // $velo->velo_spefication = $request->velo_spefication;
-        // $velo->velo_availability = $request->velo_availability;
-        // $velo->velo_prix_location = $request->velo_prix_location;
-        // $velo->velo_image = $file_name;
-        // $category->velos()->save();
+        
 
         
 
@@ -111,13 +106,12 @@ class VeloController extends Controller
      * @param  \App\Models\Velo  $velo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,  $velo_id)
+    public function update(Request $request,  $id)
     {
-        //
-      
-
+        
         $request->validate([
             'velo_name'          =>  'required',
+            'category_id' =>'required',
             'velo_spefication'         =>  'required',
             'velo_prix_location'   =>  'required',
             'velo_image'         =>  'required'
@@ -131,31 +125,34 @@ class VeloController extends Controller
 
             request()->velo_image->move(public_path('images'), $velo_image);
         }
+        $velos=Velo::findOrFail($id);
 
-        // $velo = Velo::find($request->hidden_id);
-        $category= Category::findOrFail($request->category_id);
-        // $velo= Category::findOrFail($request->category_id) ->velos()->where('id', $velo_id)->first();
-        $category->velos()->where('id', $velo_id)->update([
-            'velo_name' => $request->velo_name,
-             'velo_spefication' => $request->velo_spefication,
-             'velo_availability' => $request->velo_availability,
-            'velo_prix_location' => $request->velo_prix_location,
+
+        $velos->update([
+           
+            'velo_name'=> $request->velo_name,
+            'category_id'=> $request->category_id,
+            'velo_spefication'=> $request->velo_spefication,
+            'velo_prix_location'=> $request->velo_prix_location,
+            'velo_availability'=> $request->velo_availability,
+          
+            
             'velo_image' => $velo_image
 
-        ]);
-        // $velo->velo_name = $request->velo_name;
-
-        // $velo->velo_spefication = $request->velo_spefication;
-
-        // $velo->velo_availability = $request->velo_availability;
-        // $velo->velo_prix_location = $request->velo_prix_location;
         
-        // $velo->velo_image = $velo_image;
-        // $velo->update();
+        ]);
 
-        // $velo->save();
+        // $velo = Velo::find($request->hidden_id);
+        // $category= Category::findOrFail($request->category_id);
+        // // $velo= Category::findOrFail($request->category_id) ->velos()->where('id', $velo_id)->first();
+        // $category->velos()->where('id', $velo_id)->update([
+        //     $input,
+        //     'velo_image' => $velo_image
 
-        return redirect()->route('velo.index')->with('success', 'velo Data has been updated successfully');
+        // ]);
+
+
+        return redirect("velo");
     }
 
     /**

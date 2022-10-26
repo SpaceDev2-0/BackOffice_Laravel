@@ -35,6 +35,13 @@
 				<label class="col-sm-2 col-label-form">velo Name</label>
 				<div class="col-sm-10">
 					<input type="text" name="velo_name" class="form-control" value="{{ $velo->velo_name }}" />
+					@error('velo_name')
+
+<div  class="alert alert-danger mt-1 mb-1">
+  {{ $message}}
+</div>
+
+   @enderror
 				</div>
 			</div>
 			<div class="row mb-3">
@@ -58,6 +65,13 @@
 				<label class="col-sm-2 col-label-form">velo spefication</label>
 				<div class="col-sm-10">
 					<input type="text" name="velo_spefication" class="form-control" value="{{ $velo->velo_spefication}}" />
+					@error('velo_spefication')
+
+<div  class="alert alert-danger mt-1 mb-1">
+  {{ $message}}
+</div>
+
+   @enderror
 				</div>
 			</div>
 
@@ -65,6 +79,13 @@
 				<label class="col-sm-2 col-label-form">Velo prix location</label>
 				<div class="col-sm-10">
 					<input type="text" name="velo_prix_location" class="form-control" value="{{ $velo->velo_prix_location}}" />
+					@error('velo_prix_location')
+
+<div  class="alert alert-danger mt-1 mb-1">
+  {{ $message}}
+</div>
+
+   @enderror
 				</div>
 			</div>
 
@@ -73,8 +94,15 @@
 				<div class="col-sm-10">
 					<select name="velo_availability" class="form-control">
 						<option value="oui">oui</option>
-						<option value="nom">non</option>
+						<option value="non">non</option>
 					</select>
+					@error('velo_availability')
+
+<div  class="alert alert-danger mt-1 mb-1">
+  {{ $message}}
+</div>
+
+   @enderror
 				</div>
 			</div>
 			<div class="row mb-4">
@@ -87,8 +115,8 @@
 				</div>
 			</div>
 			<div class="text-center">
-				<input type="hidden" name="hidden_id" value="{{ $velo->id }}" />
-				<input type="submit" class="btn btn-primary" value="Edit" />
+				
+				<button type="submit" class="btn btn-primary" >Edit</button>
 			</div>	
 		</form>
 	</div>

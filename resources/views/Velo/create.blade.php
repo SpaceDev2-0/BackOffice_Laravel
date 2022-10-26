@@ -33,6 +33,13 @@
 				<label class="col-sm-2 col-label-form">velo Name</label>
 				<div class="col-sm-10">
 					<input type="text" name="velo_name" class="form-control" />
+          @error('velo_name')
+
+       <div  class="alert alert-danger mt-1 mb-1">
+        {{ $message}}
+      </div>
+
+     @enderror
 				</div>
 			</div>
 
@@ -57,6 +64,13 @@
 				<label class="col-sm-2 col-label-form">velo spefication</label>
 				<div class="col-sm-10">
 					<input type="text" name="velo_spefication" class="form-control" />
+          @error('velo_spefication')
+
+<div  class="alert alert-danger mt-1 mb-1">
+ {{ $message}}
+</div>
+
+@enderror
 				</div>
 			</div>
 			<div class="row mb-4">
@@ -66,18 +80,33 @@
 						<option value="oui">oui</option>
 						<option value="non">non</option>
 					</select>
+          @error('velo_availability')
+
+       <div  class="alert alert-danger mt-1 mb-1">
+         {{ $message}}
+<         /div>
+
+          @enderror
 				</div>
 			</div>
             <div class="row mb-3">
 				<label class="col-sm-2 col-label-form">velo prix location</label>
 				<div class="col-sm-10">
 					<input type="text" name="velo_prix_location" class="form-control" />
+          @error('velo_prix_location')
+
+<div  class="alert alert-danger mt-1 mb-1">
+ {{ $message}}
+</div>
+
+@enderror
 				</div>
 			</div>
 			<div class="row mb-4">
 				<label class="col-sm-2 col-label-form">velo Image</label>
 				<div class="col-sm-10">
 					<input type="file" name="velo_image" />
+     
 				</div>
 			</div>
 			<div class="text-center">

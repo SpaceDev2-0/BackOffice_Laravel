@@ -21,7 +21,7 @@
   <!-- End Navbar --> <div class="panel-header">
   </div>
 
-@if($message = Session::get('success'))
+ @if($message = Session::get('success'))
 
 <div class="alert alert-success">
 	{{ $message }}
@@ -48,6 +48,13 @@
                         <div class="text-center">
                         <input type="hidden" name="hidden_id" value="{{ $category->id }}" />
                             <input type="submit" class="btn btn-primary" value="Edit"/>
+                            @error('category_name')
+                            <div class="alert alert-danger">
+                          {{ $message}}
+                            </div>
+
+                              @enderror
+
                         
                         </div>
                     </form>

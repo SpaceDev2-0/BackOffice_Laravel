@@ -36,7 +36,7 @@
                 <div class="card-header">
                     <h4>
                         add category
-                        <a href="{{ route('category.create') }}" class="btn btn-success btn-sm float-end">add category</a>
+                      
                     </h4>
                 </div>
                 <div class="card-body">
@@ -44,7 +44,16 @@
                         @csrf
                         <div class="mb-3">
                             <label for="">Category Name :</label>
-                            <input type="text" name="category_name" class="form-control"> 
+                            <input type="text" name="category_name"   class="form-control" > 
+                            @error('category_name')
+
+                            <div  class="alert alert-danger mt-1 mb-1">
+                          {{ $message}}
+                            </div>
+
+                              @enderror
+
+                       
                         </div>
 
                         <div class="mb-3">
